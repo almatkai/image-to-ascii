@@ -3,7 +3,7 @@
   "name": "image-to-ascii",
   "title": "Image to Ascii",
   "description": "Convert image to Ascii",
-  "icon": "extension-icon.png",
+  "icon": "assets/extension-icon.png",
   "author": "almatkai",
   "categories": [
     "Applications",
