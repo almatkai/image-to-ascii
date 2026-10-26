@@ -1,0 +1,440 @@
+--- a/src/renderer/src/raycast-api/form-runtime.tsx
++++ b/src/renderer/src/raycast-api/form-runtime.tsx
+@@ -25,6 +25,7 @@
+   options?: Array<{ title: string; value: string }>
+   allowMultipleSelection?: boolean
+   actionId?: string
++  nativeAbsolutePath?: boolean
+ }
+ 
+ type FormItem =
+@@ -101,6 +102,7 @@
+           value: node.props?.value,
+           options: options.length > 0 ? options : undefined,
+           allowMultipleSelection: node.props?.allowMultipleSelection === true,
++          nativeAbsolutePath: node.props?.nativeAbsolutePath === true,
+           actionId: typeof node.props?.actionId === 'string' ? node.props.actionId : undefined,
+         },
+       })
+@@ -208,15 +210,16 @@
+   root: ExtensionRuntimeNode
+   title: string
+   onBack: () => void
++  pending?: boolean
+   onSubmitForm: (values: Record<string, unknown>) => void
+-  onChangeField: (actionId: string, value: unknown) => Promise<void> | void
++  onChangeField: (actionId: string, value: unknown, values?: Record<string, unknown>) => Promise<void> | void
+   onInvokeAction: (actionId: string, values?: Record<string, unknown>) => Promise<void> | void
+   onOpenActions: () => void
+   actionNotice?: { message: string; tone: 'success' | 'error' } | null
+ }
+ 
+ export const FormRuntime = forwardRef<FormRuntimeHandle, FormRuntimeProps>(function FormRuntime(
+-  { root, title, onBack, onSubmitForm, onChangeField, onInvokeAction, onOpenActions, actionNotice },
++  { root, title, onBack, onSubmitForm, onChangeField, onInvokeAction, onOpenActions, actionNotice, pending = false },
+   ref
+ ) {
+   const items = useMemo(() => collectFormItems(root), [root])
+@@ -225,12 +228,28 @@
+     [items]
+   )
+   const [values, setValues] = useState<Record<string, unknown>>(() => reconcileFormValues(fields))
++  const formDraft = useRef({ token: root.props?.formToken, revision: Number(root.props?.formRevision ?? 0), values })
++  const pendingRef = useRef(pending)
++  pendingRef.current = pending
++  const pickerAlive = useRef(true)
++  const pickerRequest = useRef(0)
++  const [pickerError, setPickerError] = useState('')
++  useEffect(() => { pickerAlive.current = true; return () => { pickerAlive.current = false } }, [])
++  const snapshot = (): Record<string, unknown> => typeof root.props?.formToken === 'string'
++    ? { ...formDraft.current.values, __formToken: root.props.formToken, __formRevision: formDraft.current.revision }
++    : formDraft.current.values
+   const nativeColorWheel = useMemo(() => parseNativeColorWheel(root.props?.nativeColorWheel), [root.props?.nativeColorWheel])
+   const localWheelCoordinates = useRef<FormWheelCoordinates | null>(null)
+   const filePickerOpenRef = useRef(false)
+   const previousServerForm = useRef({ title, fields })
+ 
+   useEffect(() => {
++    const token = root.props?.formToken
++    const revision = Number(root.props?.formRevision ?? 0)
++    if (typeof token === 'string' && formDraft.current.token === token && revision < formDraft.current.revision) return
++    if (formDraft.current.token !== token) {
++      formDraft.current = { token, revision, values: reconcileFormValues(fields) }
++    }
+     if (nativeColorWheel) {
+       localWheelCoordinates.current = reconcileFormWheelDraft(fields, localWheelCoordinates.current)
+     }
+@@ -238,13 +257,12 @@
+       ? previousServerForm.current.fields : undefined
+     const wheelDraft = nativeColorWheel ? localWheelCoordinates.current : null
+     previousServerForm.current = { title, fields }
+-    setValues((previous) => ({
+-      ...reconcileFormValues(fields, previousFields ? previous : undefined, previousFields),
+-      ...wheelDraft,
+-    }))
+-  }, [fields, nativeColorWheel, title])
+-
+-  useImperativeHandle(ref, () => ({ getValues: () => values }), [values])
++    const next = { ...reconcileFormValues(fields, previousFields ? formDraft.current.values : undefined, previousFields), ...wheelDraft }
++    formDraft.current = { token, revision, values: next }
++    setValues(next)
++  }, [fields, nativeColorWheel, title, root.props?.formToken, root.props?.formRevision])
++
++  useImperativeHandle(ref, () => ({ getValues: snapshot }))
+ 
+   const releaseFilePickerBlurSuppression = useCallback((): void => {
+     if (!filePickerOpenRef.current) return
+@@ -277,8 +295,11 @@
+   }, [releaseFilePickerBlurSuppression])
+ 
+   const updateValue = (field: FormField, value: unknown): void => {
+-    setValues((previous) => ({ ...previous, [field.id]: value }))
+-    if (field.actionId) void onChangeField(field.actionId, value)
++    if (pendingRef.current) return
++    const next = { ...formDraft.current.values, [field.id]: value }
++    formDraft.current = { ...formDraft.current, revision: formDraft.current.revision + 1, values: next }
++    setValues(next)
++    if (field.actionId) void onChangeField(field.actionId, value, snapshot())
+   }
+ 
+   return (
+@@ -286,7 +307,7 @@
+       className="flex h-full min-h-0 flex-col"
+       onSubmit={(event) => {
+         event.preventDefault()
+-        onSubmitForm(values)
++        if (!pendingRef.current) onSubmitForm(snapshot())
+       }}
+       onKeyDownCapture={(event) => {
+         if (
+@@ -298,7 +319,7 @@
+           return
+         }
+         event.preventDefault()
+-        onSubmitForm(values)
++        if (!pendingRef.current) onSubmitForm(snapshot())
+       }}
+     >
+       <div className="glass-card mb-2 shrink-0 px-4 py-3">
+@@ -306,7 +327,7 @@
+       </div>
+ 
+       <div className="glass-card min-h-0 flex-1 overflow-y-auto px-5 py-5 sm:px-8">
+-        <div className="mx-auto max-w-[900px] space-y-4">
++        <fieldset disabled={pending} className="mx-auto max-w-[900px] space-y-4 border-0 p-0 m-0 min-w-0">
+           {nativeColorWheel ? (
+             <NativeColorWheel
+               data={nativeColorWheel}
+@@ -443,6 +464,27 @@
+               )
+             }
+ 
++            if (field.type === 'Form.FilePicker' && field.nativeAbsolutePath) {
++              const selected = Array.isArray(rawValue) ? rawValue.filter((v): v is string => typeof v === 'string') : []
++              return <div key={field.key} className={FIELD_ROW_CLASS}>
++                <div className={FIELD_TITLE_CLASS}>{field.title}</div>
++                <div><button type="button" className="glass-field" onClick={() => {
++                  const token = root.props?.formToken
++                  const request = ++pickerRequest.current
++                  const revision = formDraft.current.revision
++                  setPickerError('')
++                  void window.tezbar.pickExtensionFile().then((path) => {
++                    if (pendingRef.current || !pickerAlive.current || formDraft.current.token !== token || request !== pickerRequest.current || revision !== formDraft.current.revision) return
++                    if (path !== null) updateValue(field, [path])
++                  }).catch(() => { if (pickerAlive.current && request === pickerRequest.current && formDraft.current.token === token) setPickerError('Could not choose file') })
++                }}>Choose File</button>
++                  {selected.map((path) => <span key={path}>{displayFileName(path)}</span>)}
++                  {selected.length ? <button type="button" onClick={() => { pickerRequest.current++; updateValue(field, []) }}>Clear</button> : null}
++                  {pickerError ? <span role="alert">{pickerError}</span> : null}
++                  <FormFieldFeedback field={field} />
++                </div>
++              </div>
++            }
+             if (field.type === 'Form.FilePicker') {
+               const selected = Array.isArray(rawValue)
+                 ? rawValue.filter((value): value is string => typeof value === 'string')
+@@ -520,7 +562,7 @@
+               This form did not expose any editable fields.
+             </div>
+           ) : null}
+-        </div>
++        </fieldset>
+       </div>
+ 
+       {actionNotice ? (
+--- a/src/renderer/src/raycast-api/index.tsx
++++ b/src/renderer/src/raycast-api/index.tsx
+@@ -59,8 +59,18 @@
+     onBack,
+     onSearchTextChanged,
+     onLoadMore,
+-    onInvokeAction,
++    onInvokeAction: invokeAction,
+   } = props
++  const pendingAction = useRef(false)
++  const [formPending, setFormPending] = useState(false)
++  const onInvokeAction = useCallback(async (id: string, values?: Record<string, unknown>) => {
++    const tokenized = root.type === 'Form' && typeof root.props?.formToken === 'string'
++    if (tokenized && pendingAction.current) return
++    const effect = tokenized && actions.some(action => action.id === id)
++    if (effect) { pendingAction.current = true; setFormPending(true) }
++    try { await invokeAction(id, values) }
++    finally { if (effect) { pendingAction.current = false; setFormPending(false) } }
++  }, [invokeAction, root, actions])
+   const [showActions, setShowActions] = useState(false)
+   const [actionFilterIds, setActionFilterIds] = useState<string[] | null>(null)
+   const formRuntimeRef = useRef<FormRuntimeHandle>(null)
+@@ -154,11 +164,12 @@
+           {kind === 'form' ? (
+             <FormRuntime
+               ref={formRuntimeRef}
++              pending={formPending}
+               root={root}
+               title={title}
+               onBack={onSurfaceBack}
+               onSubmitForm={onSubmitForm}
+-              onChangeField={(actionId, value) => onInvokeAction(actionId, { value })}
++              onChangeField={(actionId, value, values) => onInvokeAction(actionId, values ?? { value })}
+               onInvokeAction={onInvokeAction}
+               onOpenActions={openActions}
+               actionNotice={actionNotice}
+--- a/src/renderer/src/raycast-api/detail-runtime.tsx
++++ b/src/renderer/src/raycast-api/detail-runtime.tsx
+@@ -553,7 +553,7 @@
+           </button>
+           <div className="text-[12px] font-semibold text-ink-2">{title}</div>
+           <div className="ml-auto flex items-center gap-1">
+-            <button type="button" className="btn btn-ghost" onClick={onRunPrimaryAction}>
++            <button type="button" className="btn btn-ghost" onClick={() => onRunPrimaryAction()}>
+               Enter
+             </button>
+             <button type="button" className="btn btn-ghost" onClick={onOpenActions}>
+@@ -565,7 +565,9 @@
+ 
+       <div className="flex min-h-0 flex-1 overflow-hidden">
+         <div className="glass-card min-h-0 flex-1 overflow-y-auto px-4 py-4">
+-          {imageOnly && imageOnly.alt.toLowerCase().includes('color wheel') ? (
++          {typeof root.props?.literalText === 'string' ? (
++            <pre dir="ltr" style={{ unicodeBidi: 'isolate' }} className="whitespace-pre overflow-auto text-[13px] leading-relaxed"><code>{root.props.literalText}</code></pre>
++          ) : imageOnly && imageOnly.alt.toLowerCase().includes('color wheel') ? (
+             <ColorWheelDetail image={imageOnly} initialColor={root.props?.initialColor} />
+           ) : imageOnly ? (
+             <div className="flex h-full min-h-[420px] items-center justify-center">
+--- a/src/renderer/ExtensionRuntimeView.tsx
++++ b/src/renderer/ExtensionRuntimeView.tsx
+@@ -427,6 +427,7 @@
+   const [error, setError] = useState<string | null>(null)
+   const [actionNotice, setActionNotice] = useState<ActionNotice | null>(null)
+   const searchRequestSeq = useRef(0)
++  const actionRequestSeq = useRef(0)
+   const currentSession = useRef<string | null>(null)
+   const sessionOwner = `${state.sessionId}:${state.generation ?? ''}`
+   currentSession.current = sessionOwner
+@@ -508,8 +509,9 @@
+       subscribeVisibility: window.tezbar.onWindowVisibility,
+       refresh: async () => {
+         try {
++          const actionSeq = actionRequestSeq.current
+           const result = await window.tezbar.extensionRefreshSession({ sessionId: state.sessionId })
+-          if (cancelled || (result.ok && result.mode === 'unchanged')) return
++          if (cancelled || actionSeq !== actionRequestSeq.current || (result.ok && result.mode === 'unchanged')) return
+           if (!result.ok) {
+             setError(result.message)
+             return
+@@ -626,6 +628,7 @@
+             onSearchTextChanged={handleSearchTextChanged}
+             onLoadMore={handleLoadMore}
+             onInvokeAction={async (actionId, formValues) => {
++              const actionSeq = ++actionRequestSeq.current
+               setError(null)
+               const invokedAction = state.actions.find((action) => action.id === actionId)
+               if (isFormSurface && invokedAction?.kind === 'submit-form') {
+@@ -637,7 +640,8 @@
+                 formValues,
+               })
+ 
+-              if (currentSession.current !== sessionOwner) return
++              if (currentSession.current !== sessionOwner || actionSeq !== actionRequestSeq.current) return
++              if (result.ok && result.mode === 'unchanged') return
+               if (!result.ok) {
+                 setError(result.message)
+                 showActionFailure(result.message)
+--- a/src/shared/desktop-api.ts
++++ b/src/shared/desktop-api.ts
+@@ -162,6 +162,7 @@
+   extensionLoadMore: (
+     payload: ExtensionLoadMoreSessionRequest
+   ) => Promise<ExtensionRefreshSessionResult>
++  pickExtensionFile: () => Promise<string | null>
+   clipboardReadText: () => Promise<string>
+   clipboardWriteText: (text: string) => Promise<{ ok: boolean }>
+   clipboardWritePng: (dataUrl: string) => Promise<{ ok: boolean; error?: string }>
+--- a/src/renderer/tauri-bridge.ts
++++ b/src/renderer/tauri-bridge.ts
+@@ -167,6 +167,11 @@
+     extensionDisposeSession: (payload: any) => callBackend('extension:dispose-session', payload),
+     extensionLoadMore: (payload: any) => callBackend('extension:load-more', payload),
+ 
++    pickExtensionFile: async () => {
++      await setNativeBlurHideSuppressed(true)
++      try { return await invoke<string | null>('pick_extension_file') }
++      finally { await setNativeBlurHideSuppressed(false).catch(() => undefined) }
++    },
+     clipboardReadText: () => callBackend('clipboard:read'),
+     clipboardWriteText: (text: string) => callBackend('clipboard:write', text),
+     clipboardWritePng: (dataUrl: string) => callBackend('clipboard:write-png', dataUrl),
+--- a/src-tauri/src/lib.rs
++++ b/src-tauri/src/lib.rs
+@@ -9,6 +9,7 @@
+ mod manual_releases;
+ mod native_terminal;
+ mod qr_download;
++mod extension_file_picker;
+ mod release_channels;
+ mod resource_directory;
+ #[cfg(target_os = "macos")]
+@@ -3012,6 +3013,7 @@
+             updater::download_and_install_update,
+             updater::restart_app,
+             updater::open_release_page,
++            extension_file_picker::pick_extension_file,
+             qr_download::save_qr_png_data_url
+         ])
+         .setup(move |app| {
+--- /dev/null
++++ b/src-tauri/src/extension_file_picker.rs
+@@ -0,0 +1,18 @@
++// Generic explicit single-file selection. No extension-specific route or scan.
++use tauri::AppHandle;
++use tauri_plugin_dialog::DialogExt;
++use tokio::sync::oneshot;
++
++#[tauri::command]
++pub async fn pick_extension_file(app: AppHandle) -> Result<Option<String>, String> {
++    let (sender, receiver) = oneshot::channel();
++    app.dialog().file().pick_file(move |path| { let _ = sender.send(path); });
++    let Some(path) = receiver.await.map_err(|_| "Could not open file dialog")? else { return Ok(None); };
++    let path = path.into_path().map_err(|_| "Could not resolve selected file")?;
++    if !path.is_absolute() || !std::fs::symlink_metadata(&path).map_err(|e| e.to_string())?.is_file() {
++        return Err("Select one ordinary absolute file".into());
++    }
++    let path = path.to_str().ok_or("Selected path must be UTF-8")?;
++    if path.len() > 4096 { return Err("Selected path is too long".into()); }
++    Ok(Some(path.into()))
++}
+--- a/src-tauri/src/native_core/extensions/process_install.rs
++++ b/src-tauri/src/native_core/extensions/process_install.rs
+@@ -385,7 +385,13 @@
+     pub executable: PathBuf,
+ }
+ pub(super) fn resolve(ctx: &CoreContext, id: &str) -> Result<Package, String> {
+-    let root = root(ctx, id)?;
++    resolve_at(root(ctx, id)?, id)
++}
++pub(super) fn resolve_at(root: PathBuf, id: &str) -> Result<Package, String> {
++    for path in [&root, &root.join("versions")] {
++        let m = std::fs::symlink_metadata(path).map_err(|e| e.to_string())?;
++        if !m.is_dir() || m.file_type().is_symlink() { return Err("Package root symlink/non-directory rejected".into()); }
++    }
+     let active = read_json(&root.join("active.json")).map_err(|_| {
+         "Binary package not installed; existing schema-2 package needs upgrade".to_string()
+     })?;
+--- a/src-tauri/src/native_core/extensions/registry.rs
++++ b/src-tauri/src/native_core/extensions/registry.rs
+@@ -129,17 +129,16 @@
+ 
+ /// Native implementations use the same discovery and platform rules as the launcher.
+ pub(super) fn installed_command(ctx: &CoreContext, id: &str, command: &str) -> Option<Installed> {
+-    let native = if id.starts_with("raycast.") {
+-        let slug = slug(id).ok()?;
+-        let canonical = super::v2_runtime::canonical_id(&slug);
+-        installed(ctx, &canonical).ok()
+-    } else if id.starts_with("com.tezbar.native.") {
+-        installed(ctx, id).ok()
+-    } else {
+-        None
+-    };
++    let mut matches = collect(ctx).into_iter().filter(|entry| {
++        entry.id.starts_with("com.tezbar.native.")
++            && entry.manifest["healthError"].is_null()
++            && (entry.id == id || entry.manifest["replaces"].as_array()
++                .is_some_and(|ids| ids.iter().any(|alias| alias.as_str() == Some(id))))
++    });
++    let native = matches.next();
++    if matches.next().is_some() { return None; } // Ambiguous publisher claims fail closed.
+     if let Some(extension) = native {
+-        let active = extension.manifest["healthError"].is_null()
++        let active = compatible(&extension.manifest, false) && extension.manifest["healthError"].is_null()
+             && extension.manifest["commands"]
+                 .as_array()?
+                 .iter()
+@@ -162,6 +161,10 @@
+             .flatten()
+             .any(|cmd| cmd["name"].as_str() == Some(command) && compatible(cmd, true)))
+     .then_some(extension)
++}
++
++pub(super) fn native_command_id(ctx: &CoreContext, id: &str, command: &str) -> Option<String> {
++    installed_command(ctx, id, command).filter(|e| e.id.starts_with("com.tezbar.native.")).map(|e| e.id)
+ }
+ 
+ fn platform() -> &'static str {
+@@ -232,6 +235,12 @@
+         .unwrap_or(default)
+ }
+ 
++fn resource_root(extension: &Installed) -> Option<PathBuf> {
++    if extension.id.starts_with("com.tezbar.native.") {
++        super::process_install::resolve_at(extension.path.clone(), &extension.id).ok().map(|p| p.dir)
++    } else { Some(extension.path.clone()) }
++}
++
+ fn icon_path(extension: &Installed) -> Option<String> {
+     let name = fallback(&extension.manifest, "icon", "icon.png");
+     if name.starts_with("https://") || name.starts_with("http://") {
+@@ -244,10 +253,8 @@
+     {
+         return None;
+     }
+-    let mut candidates = vec![
+-        extension.path.join(relative),
+-        extension.path.join("assets").join(relative),
+-    ];
++    let resources = resource_root(extension)?;
++    let mut candidates = vec![resources.join(relative), resources.join("assets").join(relative)];
+     if extension.id.starts_with("com.tezbar.native.") {
+         if let Some(packages) = extension.path.parent() {
+             if let Some(extensions) = packages.parent() {
+@@ -308,10 +315,8 @@
+     {
+         return None;
+     }
+-    let mut candidates = vec![
+-        extension.path.join(relative),
+-        extension.path.join("assets").join(relative),
+-    ];
++    let resources = resource_root(extension)?;
++    let mut candidates = vec![resources.join(relative), resources.join("assets").join(relative)];
+     if extension.id.starts_with("com.tezbar.native.") {
+         if let Some(packages) = extension.path.parent() {
+             if let Some(extensions) = packages.parent() {
+--- a/src-tauri/src/native_core/extensions/native.rs
++++ b/src-tauri/src/native_core/extensions/native.rs
+@@ -615,7 +615,7 @@
+             self.dispatch(channel, body, id).await.map(Some)
+         } else if channel == "extension:run-command" {
+             let requested = body["extensionId"].as_str().unwrap_or("");
+-            if requested.starts_with("com.tezbar.native.") || v2_runtime::slug(requested).is_some()
++            if requested.starts_with("com.tezbar.native.") || registry::native_command_id(ctx, requested, body["commandName"].as_str().unwrap_or("")).is_some()
+             {
+                 self.launch(ctx, files, body).await
+             } else {
+@@ -644,7 +644,7 @@
+         let canonical = if requested.starts_with("com.tezbar.native.") {
+             requested.to_string()
+         } else {
+-            v2_runtime::canonical_id(v2_runtime::slug(requested).ok_or("Unknown extension")?)
++            match registry::native_command_id(ctx, requested, command) { Some(id) => id, None => return Ok(None) }
+         };
+         let slot = self.slot(&canonical);
+         let mut generation = slot.generation.subscribe();

@@ -1,0 +1,157 @@
+{
+  "own": {
+    "repository": "https://github.com/almatkai/image-to-ascii",
+    "sourceSha": "f018cd7e93988a0c7e33d4afba54ea9d0ab6f49e"
+  },
+  "upstream": {
+    "repository": "https://github.com/raycast/extensions",
+    "commit": "6734d85992290066fd31a7f5bee3cca3d3545a1a",
+    "path": "extensions/image-to-ascii"
+  },
+  "icon": {
+    "url": "https://raw.githubusercontent.com/raycast/extensions/6734d85992290066fd31a7f5bee3cca3d3545a1a/extensions/image-to-ascii/assets/extension-icon.png",
+    "sha256": "883d6bb2858722b70c6d72dc47b81dc52790cb7bab256138347e0f1c7e54660e",
+    "bytes": 135228,
+    "matchesOwnOriginal": true
+  },
+  "host": {
+    "commit": "ea100cee3f69711de12485ba061950c5fc65258f",
+    "fixtures": "qa/fixtures/host",
+    "verifiedAgainstExactGitShow": true
+  },
+  "sdk": {
+    "crate": "tezbar-extension-sdk",
+    "version": "0.1.1",
+    "repository": "https://github.com/almatkai/tezbar-extension-sdk-rust.git",
+    "rev": "e955911f0bf5b558f9d3eb5183df0adc95c22af2",
+    "documents": [
+      "SDK_API.md",
+      "PROTOCOL.md",
+      "HOST_INTEGRATION.md"
+    ]
+  },
+  "reusedReference": {
+    "repository": "https://github.com/almatkai/image-base64",
+    "commit": "51e302cacdaeea11038704ef2825893cb714e1f3",
+    "license": "qa/fixtures/IMAGE-BASE64-LICENSE",
+    "downloadedFiles": {
+      "v2/integration/host-prerequisites.patch": {
+        "sha256": "1f8c08f9d66e007167c0df9616ff85c0424d9c71bc0acefdbb5be82091d6f770",
+        "url": "https://raw.githubusercontent.com/almatkai/image-base64/51e302cacdaeea11038704ef2825893cb714e1f3/v2/integration/host-prerequisites.patch"
+      },
+      "v2/qa/finalize.py": {
+        "sha256": "d167deaf8cdd2caafad23d2e951edd068a2ebe92e63f836582e4cbd5c88e4472",
+        "url": "https://raw.githubusercontent.com/almatkai/image-base64/51e302cacdaeea11038704ef2825893cb714e1f3/v2/qa/finalize.py"
+      },
+      "v2/qa/fresh-build.py": {
+        "sha256": "32da83669aad044a22495f596864850573655d3e87f165b749f442dec33ee457",
+        "url": "https://raw.githubusercontent.com/almatkai/image-base64/51e302cacdaeea11038704ef2825893cb714e1f3/v2/qa/fresh-build.py"
+      },
+      "v2/qa/host-contract.py": {
+        "sha256": "fe5780a6b9a376761c65e5896ccbcad5c003ec61c514ea037c30b8d92e58eeed",
+        "url": "https://raw.githubusercontent.com/almatkai/image-base64/51e302cacdaeea11038704ef2825893cb714e1f3/v2/qa/host-contract.py"
+      },
+      "v2/qa/host-patch.py": {
+        "sha256": "c9259c17791f48ba7e547e42d4d1b9f68ecebddc7ce0313053f793d72e0bdddc",
+        "url": "https://raw.githubusercontent.com/almatkai/image-base64/51e302cacdaeea11038704ef2825893cb714e1f3/v2/qa/host-patch.py"
+      },
+      "v2/qa/notices.py": {
+        "sha256": "54bcf906c1384133dfe0ccecd5f82a6043b1ffb1222f02d06c380a9d21c7ddf9",
+        "url": "https://raw.githubusercontent.com/almatkai/image-base64/51e302cacdaeea11038704ef2825893cb714e1f3/v2/qa/notices.py"
+      },
+      "v2/qa/package-lock.json": {
+        "sha256": "7a19fb4332f21c9de29ced87fbfeaa2ed4d8e51da42a9610591a23543d3d4704",
+        "url": "https://raw.githubusercontent.com/almatkai/image-base64/51e302cacdaeea11038704ef2825893cb714e1f3/v2/qa/package-lock.json"
+      },
+      "v2/qa/package.json": {
+        "sha256": "65c4fd58b917017129a0104b3526751aafc5dc23d36c8baccdf449c9fee3071c",
+        "url": "https://raw.githubusercontent.com/almatkai/image-base64/51e302cacdaeea11038704ef2825893cb714e1f3/v2/qa/package.json"
+      },
+      "v2/qa/package.py": {
+        "sha256": "cc58950cac210edb9fece1f02ab3849d7b5f723ef1b9800479917ac844ec74ad",
+        "url": "https://raw.githubusercontent.com/almatkai/image-base64/51e302cacdaeea11038704ef2825893cb714e1f3/v2/qa/package.py"
+      },
+      "v2/qa/process.py": {
+        "sha256": "78e2814daa4f2a85616d1c694680fe5fb4660a2b1f96cc1754a27727883da148",
+        "url": "https://raw.githubusercontent.com/almatkai/image-base64/51e302cacdaeea11038704ef2825893cb714e1f3/v2/qa/process.py"
+      },
+      "v2/qa/producers.py": {
+        "sha256": "e919d2479a865ea1058023276777e56cd83d1bfcc0933c5688bcd622b6fb8090",
+        "url": "https://raw.githubusercontent.com/almatkai/image-base64/51e302cacdaeea11038704ef2825893cb714e1f3/v2/qa/producers.py"
+      },
+      "v2/qa/renderer.cjs": {
+        "sha256": "b6bc3888b7354e014f60803f6a92fbb5865ea43265041309c23652cd80dff7d9",
+        "url": "https://raw.githubusercontent.com/almatkai/image-base64/51e302cacdaeea11038704ef2825893cb714e1f3/v2/qa/renderer.cjs"
+      },
+      "v2/src/files.rs": {
+        "sha256": "8ca4ccac8dcd58082bf7f2f019502a194b730b574616dd7247b9bb446b463be3",
+        "url": "https://raw.githubusercontent.com/almatkai/image-base64/51e302cacdaeea11038704ef2825893cb714e1f3/v2/src/files.rs"
+      },
+      "v2/src/lib.rs": {
+        "sha256": "570339bb37510a3ad5e77134c13500bd22f487ac5b2ab720b19a6e1ca1354747",
+        "url": "https://raw.githubusercontent.com/almatkai/image-base64/51e302cacdaeea11038704ef2825893cb714e1f3/v2/src/lib.rs"
+      },
+      "v2/tests/host.rs": {
+        "sha256": "e501ddee5f520f2b0cdc46025cd89c693d7be998f2ab13db497375ed53172ec3",
+        "url": "https://raw.githubusercontent.com/almatkai/image-base64/51e302cacdaeea11038704ef2825893cb714e1f3/v2/tests/host.rs"
+      },
+      "v2/tests/producers.rs": {
+        "sha256": "5faa3f4890ba8f46607d933b1f6676e4947af88905452663ac89e6ae0588c8cf",
+        "url": "https://raw.githubusercontent.com/almatkai/image-base64/51e302cacdaeea11038704ef2825893cb714e1f3/v2/tests/producers.rs"
+      }
+    }
+  },
+  "fixtureSha256": {
+    "qa/fixtures/HOST_INTEGRATION.md": "88e6ca0c1090bcdf5d5501583e52e3eb7b0a369f4fea17ce4b01616c2f69d9a8",
+    "qa/fixtures/IMAGE-BASE64-LICENSE": "1d7dbdbcd4fe14dfa08334fab20bffad23c1290f195792a3a4420dadf9912f81",
+    "qa/fixtures/PROTOCOL.md": "0bc474c2e79e6e3f46ad2d577f83144ad69bd87cb17b74600a17178bcc257371",
+    "qa/fixtures/SDK_API.md": "73945c65d763a82ee1bd64b2f30418f8aaec2e75966d71d7b774e7f7e40f098e",
+    "qa/fixtures/archives/absolute.bin": "5853a80a8ea5b0293472615486f064b8a449ec9f2ef6208d11dfdfa734db8106",
+    "qa/fixtures/archives/case-collision.bin": "eb281d551f35f2497bae06159addc9e815679f7fdcfe252e980288b2c112b265",
+    "qa/fixtures/archives/reserved.bin": "946a075516f4fae3afad64f513a0d8ef9cd9c5d82d820132c4009622154935b3",
+    "qa/fixtures/archives/symlink.bin": "4e74816ccc447ed4f811b2f05a5a5a0d29afcec1e325d73cc33a20ba107991de",
+    "qa/fixtures/archives/traversal.bin": "e5dbd2c8d30b1ec636cb633b14f9ed129c8aaf2c17fcc20a26ebbdcd7cb19cb7",
+    "qa/fixtures/host/LICENSE": "0ed6b1b2760294d4aaaa45be38e166fcc0168e1dd5190423c096fcbe1c94afbf",
+    "qa/fixtures/host/docs/EXTERNAL_RUST_EXTENSIONS.md": "56da4ce632e1362ad56c380fa6d706a1f455ea44b67cd473b0b3eb216a9d5610",
+    "qa/fixtures/host/package.json": "51c1d7662dfed462da4903e2e6dabf5358b3124e73751e5ffcbd31b25f6301c5",
+    "qa/fixtures/host/pnpm-lock.yaml": "f98edb2075fda3dd40b530bb41a7c007aa06e24748a5603fabe26b468d390d8e",
+    "qa/fixtures/host/schemas/extension-v3.schema.json": "6f42f0316aa88097703496e828b11afcc7caecf8477fa7502df903c3ad2a8048",
+    "qa/fixtures/host/src/renderer/ExtensionRuntimeView.tsx": "c8378d1a1cc91cf622f81dc1bd88ed986ea2e9c396f7ff497e649171f573c5e8",
+    "qa/fixtures/host/src/renderer/colorConverter.ts": "3ed3ae957716fe53918b20ed7c723088d7b95b4533beb1fd18fd9d7ad421202e",
+    "qa/fixtures/host/src/renderer/src/raycast-api/detail-runtime.tsx": "32eecb50891e0f282bd3d78d8a38193ec24540bf70c3fdc8e43a1d368c97d54c",
+    "qa/fixtures/host/src/renderer/src/raycast-api/form-runtime.tsx": "8568d0ac5be03eea97d0def38067dbbbdce5ae97c36a51024857ef20dce299a6",
+    "qa/fixtures/host/src/renderer/src/raycast-api/index.tsx": "7fc8413a72b92e8f88b0939cd93f91624018fe0765baa1e71b38b86f8cc77a64",
+    "qa/fixtures/host/src/renderer/src/raycast-api/ipc-bridge.ts": "17784548760d476efebeae36d5b03e9c50a69c2da2b92ce0163cabbfe9566d97",
+    "qa/fixtures/host/src/renderer/tauri-bridge.ts": "a6d454fb3c39081ea18dd745cd856519682b089464aa043ecd778d39cb22bab9",
+    "qa/fixtures/host/src/renderer/ui/Markdown.tsx": "d205312b35293a433d5398e4edf1dcc96662cacd34036e8ee3ec503f65eee2de",
+    "qa/fixtures/host/src/renderer/ui/primitives.tsx": "0bcedb2a1158a00ae7d4237f6ee875a58d9496e8576fb72ac78b79af82365044",
+    "qa/fixtures/host/src/shared/desktop-api.ts": "67b93a2b71d7e39a99940ff81badd71886429df2d1a9244ccb191b7a1929e38f",
+    "qa/fixtures/host/src/shared/extensionRuntime.ts": "47a290032a9967e2dee5142030b4ef8cfc5237a79521aa535f8a12d8c16deda4",
+    "qa/fixtures/host/src-tauri/Cargo.toml": "e0b61e58cf85fa981f26422230d9f9e161bd46e5ec7e7beb128fd1e63cbf91a3",
+    "qa/fixtures/host/src-tauri/src/lib.rs": "80e9522200e9be3f9125cbee82414ba105a355456f316e9051597137f6faecde",
+    "qa/fixtures/host/src-tauri/src/native_core/extensions/loved_extensions.json": "f30e521b2c1b196301d81502478732d506a50ed975a54f179ed077a687ca5537",
+    "qa/fixtures/host/src-tauri/src/native_core/extensions/mod.rs": "bdeeaf79c655af88912a10db2c13114890b1ca95fbeb84a874d6bf1340c53b8b",
+    "qa/fixtures/host/src-tauri/src/native_core/extensions/native.rs": "f11d1f436fa5f9b045a7ac25f3516adb0efc6d4c12ce1f0f0c4768940fafe16f",
+    "qa/fixtures/host/src-tauri/src/native_core/extensions/process.rs": "eb51da47a912c2a364eff16874b584ee0a2a4b571968ac17fd5056715a2c3d18",
+    "qa/fixtures/host/src-tauri/src/native_core/extensions/process_host.rs": "daf45815d76762323c6c1320c88ed24dfe28160a60bb4974b8073e3f17a3b982",
+    "qa/fixtures/host/src-tauri/src/native_core/extensions/process_install.rs": "1fc130d58703f80db0c5255d31a1e31b9f4e1a67876f98f86ceae7ede6363ee7",
+    "qa/fixtures/host/src-tauri/src/native_core/extensions/registry.rs": "05dd5d9c5fafbac3034e9ba5e101e345a5d3bb658a49d22696e59ea924530e66",
+    "qa/fixtures/host/src-tauri/src/native_core/extensions/v2_catalog.json": "13eab282b6c4ce2f7f76b614288544ca328cb70020c9d5bcbbd82b3b10efbc05",
+    "qa/fixtures/host/src-tauri/src/native_core/extensions/v2_runtime.rs": "537aeb67c9a7ad052c348d6c4fe09b19027854d07e912a432d36bc14896fc392",
+    "qa/fixtures/host/src-tauri/src/native_core/launcher/clipboard.rs": "8af5b882e06c9025d09a71b46b2f36c3e2a41513cd44fd2d0f945c58c9aa8d7d",
+    "qa/fixtures/host/src-tauri/src/native_core/launcher/clipboard_native.rs": "86f93ada93f45b378ec6480a169e3556346f9aefff49048dc283ee4fe53e83cf",
+    "qa/fixtures/host/src-tauri/src/native_core/launcher/mod.rs": "59c6e8d31873f2656a09e925412f7df1d33ef7973d42de3a81edc29f743160c6",
+    "qa/fixtures/host/src-tauri/src/native_core/launcher/stores.rs": "9cd4061f767a7bca563dfa3f2df58228f9b6ef405f83462e4e5a1da1d5b07ae2",
+    "qa/fixtures/host/src-tauri/src/native_core/mod.rs": "7fc896152a44d67382e976cc52a3484bcaa48089e0c581c6c7e0d4e7e4bc5534",
+    "qa/fixtures/host/src-tauri/src/qr_download.rs": "1fc33596a9168548b40d9eee92747997824dd7ae60792a95cc91561f6dcf6f72",
+    "qa/fixtures/sdk/Cargo.toml": "f3f6c5a49f92dced2ff7b8ea9c5942d826a8a6c3cdade67f62003ded86b506dd",
+    "qa/fixtures/sdk/LICENSE": "0ed6b1b2760294d4aaaa45be38e166fcc0168e1dd5190423c096fcbe1c94afbf",
+    "qa/fixtures/sdk/NOTICE": "aa04ab6115cfc2e2172b0613013611a59dc487c70f3e2dfbd2f135326d703c74",
+    "qa/fixtures/sdk/src/context.rs": "9d8498bf3799690703c0a4e70fed2c9356850cc0c4e35370104fd09898c09efa",
+    "qa/fixtures/sdk/src/lib.rs": "7ffb2da74cfcf91f428453cf90594baa79b21251b7df77756348e0acda79cd16",
+    "qa/fixtures/sdk/src/runner.rs": "975350f717db0a3bf9cac11e9efd733719d2148544c2e38d82758c92a0a88053",
+    "qa/fixtures/tls/ca.pem": "2195a54559eedf5aef16c11a601ee286b589938d5532dac6a4253f84d05efb49",
+    "qa/fixtures/tls/server.key": "edb717bb66319dad097071f87b8be22da64f9fcb2d0a1ea6f8cdc48d4cc0984d",
+    "qa/fixtures/tls/server.pem": "ae33456e9038676e6befb75caa1c6061fe986d4f9fd2044a6049a30dd78b7ced"
+  }
+}

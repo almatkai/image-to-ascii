@@ -15,3 +15,5 @@ Convert image into stunning ASCII art right from Raycast.
 - Type `Convert Image to Ascii`
 - Select your image file
 - Enjoy your ASCII masterpiece
+
+Native Rust development port: [v2/README.md](v2/README.md).

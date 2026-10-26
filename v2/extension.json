@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 3,
+  "id": "com.tezbar.native.image-to-ascii",
+  "slug": "image-to-ascii",
+  "name": "Image to Ascii",
+  "version": "2.0.0",
+  "description": "Upload a selected image to convert it to ASCII text.",
+  "icon": "resources/extension-icon.png",
+  "runtime": "rust",
+  "execution": "process",
+  "protocolVersion": 1,
+  "repository": "https://github.com/almatkai/image-to-ascii",
+  "platforms": [
+    "macOS",
+    "Windows"
+  ],
+  "commands": [
+    {
+      "name": "convert-image-to-ascii",
+      "title": "Convert Image to Ascii",
+      "description": "Convert image to Ascii",
+      "mode": "view",
+      "platforms": [
+        "macOS",
+        "Windows"
+      ],
+      "runtime": "rust",
+      "timeoutMs": 45000,
+      "refreshMs": null,
+      "concurrency": "reject-while-busy"
+    }
+  ],
+  "preferences": [],
+  "replaces": [
+    "com.tezbar.image-to-ascii",
+    "raycast.image-to-ascii"
+  ],
+  "capabilities": [
+    "selection.read",
+    "clipboard.write"
+  ],
+  "artifacts": {},
+  "verification": [
+    {
+      "platform": "macOS",
+      "state": "not-run",
+      "note": "Native OS/GUI/full-host acceptance not run; development process QA only."
+    },
+    {
+      "platform": "Windows",
+      "state": "not-run",
+      "note": "Native OS/GUI/full-host acceptance not run; development process QA only."
+    }
+  ]
+}

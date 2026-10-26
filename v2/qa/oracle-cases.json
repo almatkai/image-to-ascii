@@ -1,0 +1,758 @@
+{
+  "assertions": 180,
+  "sourceSHA256": "ca0d8e10c4ddcd2506d39c8f4eb8c107eff6bdf6b981a00d88e9aa9bae0cfaae",
+  "lockedAxios": "1.15.2",
+  "lockedFormData": "4.0.5",
+  "numeric": [
+    {
+      "text": "",
+      "trim": "",
+      "number": "0",
+      "sourceAccepted": true,
+      "wire": null,
+      "nativeExpected": null
+    },
+    {
+      "text": " ",
+      "trim": "",
+      "number": "0",
+      "sourceAccepted": true,
+      "wire": null,
+      "nativeExpected": null
+    },
+    {
+      "text": "80",
+      "trim": "80",
+      "number": "80",
+      "sourceAccepted": true,
+      "wire": "80",
+      "nativeExpected": "80"
+    },
+    {
+      "text": "1.5",
+      "trim": "1.5",
+      "number": "1.5",
+      "sourceAccepted": true,
+      "wire": "1.5",
+      "nativeExpected": "1.5"
+    },
+    {
+      "text": "1e2",
+      "trim": "1e2",
+      "number": "100",
+      "sourceAccepted": true,
+      "wire": "100",
+      "nativeExpected": "100"
+    },
+    {
+      "text": "0x20",
+      "trim": "0x20",
+      "number": "32",
+      "sourceAccepted": true,
+      "wire": "32",
+      "nativeExpected": "32"
+    },
+    {
+      "text": "0o10",
+      "trim": "0o10",
+      "number": "8",
+      "sourceAccepted": true,
+      "wire": "8",
+      "nativeExpected": "8"
+    },
+    {
+      "text": "0b11",
+      "trim": "0b11",
+      "number": "3",
+      "sourceAccepted": true,
+      "wire": "3",
+      "nativeExpected": "3"
+    },
+    {
+      "text": "+2",
+      "trim": "+2",
+      "number": "2",
+      "sourceAccepted": true,
+      "wire": "2",
+      "nativeExpected": "2"
+    },
+    {
+      "text": ".5",
+      "trim": ".5",
+      "number": "0.5",
+      "sourceAccepted": true,
+      "wire": "0.5",
+      "nativeExpected": "0.5"
+    },
+    {
+      "text": "1.",
+      "trim": "1.",
+      "number": "1",
+      "sourceAccepted": true,
+      "wire": "1",
+      "nativeExpected": "1"
+    },
+    {
+      "text": "1e-7",
+      "trim": "1e-7",
+      "number": "1e-7",
+      "sourceAccepted": true,
+      "wire": "1e-7",
+      "nativeExpected": "1e-7"
+    },
+    {
+      "text": "1e-6",
+      "trim": "1e-6",
+      "number": "0.000001",
+      "sourceAccepted": true,
+      "wire": "0.000001",
+      "nativeExpected": "0.000001"
+    },
+    {
+      "text": "5e-324",
+      "trim": "5e-324",
+      "number": "5e-324",
+      "sourceAccepted": true,
+      "wire": "5e-324",
+      "nativeExpected": "5e-324"
+    },
+    {
+      "text": "1e-324",
+      "trim": "1e-324",
+      "number": "0",
+      "sourceAccepted": false,
+      "wire": null,
+      "nativeExpected": "invalid"
+    },
+    {
+      "text": "-1",
+      "trim": "-1",
+      "number": "-1",
+      "sourceAccepted": false,
+      "wire": null,
+      "nativeExpected": "invalid"
+    },
+    {
+      "text": "0",
+      "trim": "0",
+      "number": "0",
+      "sourceAccepted": false,
+      "wire": null,
+      "nativeExpected": "invalid"
+    },
+    {
+      "text": "-0",
+      "trim": "-0",
+      "number": "0",
+      "sourceAccepted": false,
+      "wire": null,
+      "nativeExpected": "invalid"
+    },
+    {
+      "text": "NaN",
+      "trim": "NaN",
+      "number": "NaN",
+      "sourceAccepted": false,
+      "wire": null,
+      "nativeExpected": "invalid"
+    },
+    {
+      "text": "Infinity",
+      "trim": "Infinity",
+      "number": "Infinity",
+      "sourceAccepted": true,
+      "wire": "Infinity",
+      "nativeExpected": "resource-rejected"
+    },
+    {
+      "text": "+Infinity",
+      "trim": "+Infinity",
+      "number": "Infinity",
+      "sourceAccepted": true,
+      "wire": "Infinity",
+      "nativeExpected": "resource-rejected"
+    },
+    {
+      "text": "inf",
+      "trim": "inf",
+      "number": "NaN",
+      "sourceAccepted": false,
+      "wire": null,
+      "nativeExpected": "invalid"
+    },
+    {
+      "text": "0x",
+      "trim": "0x",
+      "number": "NaN",
+      "sourceAccepted": false,
+      "wire": null,
+      "nativeExpected": "invalid"
+    },
+    {
+      "text": "+0x10",
+      "trim": "+0x10",
+      "number": "NaN",
+      "sourceAccepted": false,
+      "wire": null,
+      "nativeExpected": "invalid"
+    },
+    {
+      "text": "1_000",
+      "trim": "1_000",
+      "number": "NaN",
+      "sourceAccepted": false,
+      "wire": null,
+      "nativeExpected": "invalid"
+    },
+    {
+      "text": "1e4",
+      "trim": "1e4",
+      "number": "10000",
+      "sourceAccepted": true,
+      "wire": "10000",
+      "nativeExpected": "10000"
+    },
+    {
+      "text": "10000.1",
+      "trim": "10000.1",
+      "number": "10000.1",
+      "sourceAccepted": true,
+      "wire": "10000.1",
+      "nativeExpected": "resource-rejected"
+    },
+    {
+      "text": "﻿80 ",
+      "trim": "80",
+      "number": "80",
+      "sourceAccepted": true,
+      "wire": "80",
+      "nativeExpected": "80"
+    },
+    {
+      "text": "80",
+      "trim": "80",
+      "number": "NaN",
+      "sourceAccepted": false,
+      "wire": null,
+      "nativeExpected": "invalid"
+    },
+    {
+      "text": "1e400",
+      "trim": "1e400",
+      "number": "Infinity",
+      "sourceAccepted": true,
+      "wire": "Infinity",
+      "nativeExpected": "resource-rejected"
+    }
+  ],
+  "selectionCases": [
+    {
+      "selection": [],
+      "error": false,
+      "expected": []
+    },
+    {
+      "selection": [
+        {
+          "path": "/owned/PIC.JpEg"
+        }
+      ],
+      "error": false,
+      "expected": [
+        "/owned/PIC.JpEg"
+      ]
+    },
+    {
+      "selection": [
+        {
+          "path": "/owned/a.png"
+        },
+        {
+          "path": "/owned/b.png"
+        }
+      ],
+      "error": false,
+      "expected": []
+    },
+    {
+      "selection": [
+        {
+          "path": "/owned/a.gif"
+        }
+      ],
+      "error": false,
+      "expected": []
+    },
+    {
+      "selection": [
+        {}
+      ],
+      "error": false,
+      "expected": []
+    },
+    {
+      "selection": [],
+      "error": true,
+      "expected": []
+    }
+  ],
+  "responses": [
+    {
+      "body": "ASCII\n",
+      "result": "ASCII\n",
+      "sourceMarkdown": "```\nASCII\n\n```",
+      "type": "string"
+    },
+    {
+      "body": "\"quoted\\nASCII\"",
+      "result": "quoted\nASCII",
+      "sourceMarkdown": "```\nquoted\nASCII\n```",
+      "type": "string"
+    },
+    {
+      "body": "{\"error\":\"bad\"}",
+      "result": {
+        "error": "bad"
+      },
+      "sourceMarkdown": "```\n[object Object]\n```",
+      "type": "object"
+    },
+    {
+      "body": "null",
+      "result": null,
+      "sourceMarkdown": "```\nnull\n```",
+      "type": "object"
+    },
+    {
+      "body": "true",
+      "result": true,
+      "sourceMarkdown": "```\ntrue\n```",
+      "type": "boolean"
+    },
+    {
+      "body": "123",
+      "result": 123,
+      "sourceMarkdown": "```\n123\n```",
+      "type": "number"
+    },
+    {
+      "body": "1e400",
+      "result": null,
+      "sourceMarkdown": "```\nInfinity\n```",
+      "type": "number"
+    },
+    {
+      "body": "[1,2]",
+      "result": [
+        1,
+        2
+      ],
+      "sourceMarkdown": "```\n1,2\n```",
+      "type": "object"
+    },
+    {
+      "body": "\"\\ud800\"",
+      "result": null,
+      "sourceMarkdown": null,
+      "type": "string",
+      "nativeExpected": "unicode-rejected",
+      "utf16": [
+        55296
+      ]
+    },
+    {
+      "body": "\"\\ud83d\\ude00\"",
+      "result": "😀",
+      "sourceMarkdown": "```\n😀\n```",
+      "type": "string"
+    },
+    {
+      "body": "{broken",
+      "result": "{broken",
+      "sourceMarkdown": "```\n{broken\n```",
+      "type": "string"
+    },
+    {
+      "body": "",
+      "result": "",
+      "sourceMarkdown": "```\n\n```",
+      "type": "string"
+    },
+    {
+      "body": "﻿\"BOM\"",
+      "result": "BOM",
+      "sourceMarkdown": "```\nBOM\n```",
+      "type": "string"
+    },
+    {
+      "body": "```\n<img src=\"https://blocked.invalid\">\n![x](https://blocked.invalid/a)\n‮",
+      "result": "```\n<img src=\"https://blocked.invalid\">\n![x](https://blocked.invalid/a)\n‮",
+      "sourceMarkdown": "```\n```\n<img src=\"https://blocked.invalid\">\n![x](https://blocked.invalid/a)\n‮\n```",
+      "type": "string"
+    }
+  ],
+  "multipartSamples": [
+    {
+      "text": "",
+      "trim": "",
+      "number": "0",
+      "sourceAccepted": true,
+      "wire": null,
+      "nativeExpected": null,
+      "multipart": {
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "multipart/form-data; boundary=--------------------------111111111111111111111111",
+          "User-Agent": "axios/1.15.2",
+          "Content-Length": "320",
+          "Accept-Encoding": "gzip, compress, deflate, br"
+        },
+        "base64": "LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJmaWxlIjsgZmlsZW5hbWU9IkZha2UuUE5HIg0KQ29udGVudC1UeXBlOiBpbWFnZS9wbmcNCg0KAAEC/w0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJjb21wbGV4Ig0KDQpmYWxzZQ0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMS0tDQo="
+      }
+    },
+    {
+      "text": " ",
+      "trim": "",
+      "number": "0",
+      "sourceAccepted": true,
+      "wire": null,
+      "nativeExpected": null,
+      "multipart": {
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "multipart/form-data; boundary=--------------------------111111111111111111111111",
+          "User-Agent": "axios/1.15.2",
+          "Content-Length": "320",
+          "Accept-Encoding": "gzip, compress, deflate, br"
+        },
+        "base64": "LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJmaWxlIjsgZmlsZW5hbWU9IkZha2UuUE5HIg0KQ29udGVudC1UeXBlOiBpbWFnZS9wbmcNCg0KAAEC/w0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJjb21wbGV4Ig0KDQpmYWxzZQ0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMS0tDQo="
+      }
+    },
+    {
+      "text": "80",
+      "trim": "80",
+      "number": "80",
+      "sourceAccepted": true,
+      "wire": "80",
+      "nativeExpected": "80",
+      "multipart": {
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "multipart/form-data; boundary=--------------------------111111111111111111111111",
+          "User-Agent": "axios/1.15.2",
+          "Content-Length": "426",
+          "Accept-Encoding": "gzip, compress, deflate, br"
+        },
+        "base64": "LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJmaWxlIjsgZmlsZW5hbWU9IkZha2UuUE5HIg0KQ29udGVudC1UeXBlOiBpbWFnZS9wbmcNCg0KAAEC/w0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJjb21wbGV4Ig0KDQpmYWxzZQ0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJ3aWR0aCINCg0KODANCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0xMTExMTExMTExMTExMTExMTExMTExMTEtLQ0K"
+      }
+    },
+    {
+      "text": "1.5",
+      "trim": "1.5",
+      "number": "1.5",
+      "sourceAccepted": true,
+      "wire": "1.5",
+      "nativeExpected": "1.5",
+      "multipart": {
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "multipart/form-data; boundary=--------------------------111111111111111111111111",
+          "User-Agent": "axios/1.15.2",
+          "Content-Length": "427",
+          "Accept-Encoding": "gzip, compress, deflate, br"
+        },
+        "base64": "LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJmaWxlIjsgZmlsZW5hbWU9IkZha2UuUE5HIg0KQ29udGVudC1UeXBlOiBpbWFnZS9wbmcNCg0KAAEC/w0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJjb21wbGV4Ig0KDQpmYWxzZQ0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJ3aWR0aCINCg0KMS41DQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tMTExMTExMTExMTExMTExMTExMTExMTExLS0NCg=="
+      }
+    },
+    {
+      "text": "1e2",
+      "trim": "1e2",
+      "number": "100",
+      "sourceAccepted": true,
+      "wire": "100",
+      "nativeExpected": "100",
+      "multipart": {
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "multipart/form-data; boundary=--------------------------111111111111111111111111",
+          "User-Agent": "axios/1.15.2",
+          "Content-Length": "427",
+          "Accept-Encoding": "gzip, compress, deflate, br"
+        },
+        "base64": "LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJmaWxlIjsgZmlsZW5hbWU9IkZha2UuUE5HIg0KQ29udGVudC1UeXBlOiBpbWFnZS9wbmcNCg0KAAEC/w0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJjb21wbGV4Ig0KDQpmYWxzZQ0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJ3aWR0aCINCg0KMTAwDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tMTExMTExMTExMTExMTExMTExMTExMTExLS0NCg=="
+      }
+    },
+    {
+      "text": "0x20",
+      "trim": "0x20",
+      "number": "32",
+      "sourceAccepted": true,
+      "wire": "32",
+      "nativeExpected": "32",
+      "multipart": {
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "multipart/form-data; boundary=--------------------------111111111111111111111111",
+          "User-Agent": "axios/1.15.2",
+          "Content-Length": "426",
+          "Accept-Encoding": "gzip, compress, deflate, br"
+        },
+        "base64": "LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJmaWxlIjsgZmlsZW5hbWU9IkZha2UuUE5HIg0KQ29udGVudC1UeXBlOiBpbWFnZS9wbmcNCg0KAAEC/w0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJjb21wbGV4Ig0KDQpmYWxzZQ0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJ3aWR0aCINCg0KMzINCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0xMTExMTExMTExMTExMTExMTExMTExMTEtLQ0K"
+      }
+    },
+    {
+      "text": "0o10",
+      "trim": "0o10",
+      "number": "8",
+      "sourceAccepted": true,
+      "wire": "8",
+      "nativeExpected": "8",
+      "multipart": {
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "multipart/form-data; boundary=--------------------------111111111111111111111111",
+          "User-Agent": "axios/1.15.2",
+          "Content-Length": "425",
+          "Accept-Encoding": "gzip, compress, deflate, br"
+        },
+        "base64": "LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJmaWxlIjsgZmlsZW5hbWU9IkZha2UuUE5HIg0KQ29udGVudC1UeXBlOiBpbWFnZS9wbmcNCg0KAAEC/w0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJjb21wbGV4Ig0KDQpmYWxzZQ0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJ3aWR0aCINCg0KOA0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMS0tDQo="
+      }
+    },
+    {
+      "text": "0b11",
+      "trim": "0b11",
+      "number": "3",
+      "sourceAccepted": true,
+      "wire": "3",
+      "nativeExpected": "3",
+      "multipart": {
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "multipart/form-data; boundary=--------------------------111111111111111111111111",
+          "User-Agent": "axios/1.15.2",
+          "Content-Length": "425",
+          "Accept-Encoding": "gzip, compress, deflate, br"
+        },
+        "base64": "LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJmaWxlIjsgZmlsZW5hbWU9IkZha2UuUE5HIg0KQ29udGVudC1UeXBlOiBpbWFnZS9wbmcNCg0KAAEC/w0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJjb21wbGV4Ig0KDQpmYWxzZQ0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJ3aWR0aCINCg0KMw0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMS0tDQo="
+      }
+    },
+    {
+      "text": "+2",
+      "trim": "+2",
+      "number": "2",
+      "sourceAccepted": true,
+      "wire": "2",
+      "nativeExpected": "2",
+      "multipart": {
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "multipart/form-data; boundary=--------------------------111111111111111111111111",
+          "User-Agent": "axios/1.15.2",
+          "Content-Length": "425",
+          "Accept-Encoding": "gzip, compress, deflate, br"
+        },
+        "base64": "LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJmaWxlIjsgZmlsZW5hbWU9IkZha2UuUE5HIg0KQ29udGVudC1UeXBlOiBpbWFnZS9wbmcNCg0KAAEC/w0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJjb21wbGV4Ig0KDQpmYWxzZQ0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJ3aWR0aCINCg0KMg0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMS0tDQo="
+      }
+    },
+    {
+      "text": ".5",
+      "trim": ".5",
+      "number": "0.5",
+      "sourceAccepted": true,
+      "wire": "0.5",
+      "nativeExpected": "0.5",
+      "multipart": {
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "multipart/form-data; boundary=--------------------------111111111111111111111111",
+          "User-Agent": "axios/1.15.2",
+          "Content-Length": "427",
+          "Accept-Encoding": "gzip, compress, deflate, br"
+        },
+        "base64": "LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJmaWxlIjsgZmlsZW5hbWU9IkZha2UuUE5HIg0KQ29udGVudC1UeXBlOiBpbWFnZS9wbmcNCg0KAAEC/w0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJjb21wbGV4Ig0KDQpmYWxzZQ0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJ3aWR0aCINCg0KMC41DQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tMTExMTExMTExMTExMTExMTExMTExMTExLS0NCg=="
+      }
+    },
+    {
+      "text": "1.",
+      "trim": "1.",
+      "number": "1",
+      "sourceAccepted": true,
+      "wire": "1",
+      "nativeExpected": "1",
+      "multipart": {
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "multipart/form-data; boundary=--------------------------111111111111111111111111",
+          "User-Agent": "axios/1.15.2",
+          "Content-Length": "425",
+          "Accept-Encoding": "gzip, compress, deflate, br"
+        },
+        "base64": "LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJmaWxlIjsgZmlsZW5hbWU9IkZha2UuUE5HIg0KQ29udGVudC1UeXBlOiBpbWFnZS9wbmcNCg0KAAEC/w0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJjb21wbGV4Ig0KDQpmYWxzZQ0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJ3aWR0aCINCg0KMQ0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMS0tDQo="
+      }
+    },
+    {
+      "text": "1e-7",
+      "trim": "1e-7",
+      "number": "1e-7",
+      "sourceAccepted": true,
+      "wire": "1e-7",
+      "nativeExpected": "1e-7",
+      "multipart": {
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "multipart/form-data; boundary=--------------------------111111111111111111111111",
+          "User-Agent": "axios/1.15.2",
+          "Content-Length": "428",
+          "Accept-Encoding": "gzip, compress, deflate, br"
+        },
+        "base64": "LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJmaWxlIjsgZmlsZW5hbWU9IkZha2UuUE5HIg0KQ29udGVudC1UeXBlOiBpbWFnZS9wbmcNCg0KAAEC/w0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJjb21wbGV4Ig0KDQpmYWxzZQ0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJ3aWR0aCINCg0KMWUtNw0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMS0tDQo="
+      }
+    },
+    {
+      "text": "1e-6",
+      "trim": "1e-6",
+      "number": "0.000001",
+      "sourceAccepted": true,
+      "wire": "0.000001",
+      "nativeExpected": "0.000001",
+      "multipart": {
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "multipart/form-data; boundary=--------------------------111111111111111111111111",
+          "User-Agent": "axios/1.15.2",
+          "Content-Length": "432",
+          "Accept-Encoding": "gzip, compress, deflate, br"
+        },
+        "base64": "LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJmaWxlIjsgZmlsZW5hbWU9IkZha2UuUE5HIg0KQ29udGVudC1UeXBlOiBpbWFnZS9wbmcNCg0KAAEC/w0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJjb21wbGV4Ig0KDQpmYWxzZQ0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJ3aWR0aCINCg0KMC4wMDAwMDENCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0xMTExMTExMTExMTExMTExMTExMTExMTEtLQ0K"
+      }
+    },
+    {
+      "text": "5e-324",
+      "trim": "5e-324",
+      "number": "5e-324",
+      "sourceAccepted": true,
+      "wire": "5e-324",
+      "nativeExpected": "5e-324",
+      "multipart": {
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "multipart/form-data; boundary=--------------------------111111111111111111111111",
+          "User-Agent": "axios/1.15.2",
+          "Content-Length": "430",
+          "Accept-Encoding": "gzip, compress, deflate, br"
+        },
+        "base64": "LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJmaWxlIjsgZmlsZW5hbWU9IkZha2UuUE5HIg0KQ29udGVudC1UeXBlOiBpbWFnZS9wbmcNCg0KAAEC/w0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJjb21wbGV4Ig0KDQpmYWxzZQ0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJ3aWR0aCINCg0KNWUtMzI0DQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tMTExMTExMTExMTExMTExMTExMTExMTExLS0NCg=="
+      }
+    },
+    {
+      "text": "Infinity",
+      "trim": "Infinity",
+      "number": "Infinity",
+      "sourceAccepted": true,
+      "wire": "Infinity",
+      "nativeExpected": "resource-rejected",
+      "multipart": {
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "multipart/form-data; boundary=--------------------------111111111111111111111111",
+          "User-Agent": "axios/1.15.2",
+          "Content-Length": "432",
+          "Accept-Encoding": "gzip, compress, deflate, br"
+        },
+        "base64": "LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJmaWxlIjsgZmlsZW5hbWU9IkZha2UuUE5HIg0KQ29udGVudC1UeXBlOiBpbWFnZS9wbmcNCg0KAAEC/w0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJjb21wbGV4Ig0KDQpmYWxzZQ0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJ3aWR0aCINCg0KSW5maW5pdHkNCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0xMTExMTExMTExMTExMTExMTExMTExMTEtLQ0K"
+      }
+    },
+    {
+      "text": "+Infinity",
+      "trim": "+Infinity",
+      "number": "Infinity",
+      "sourceAccepted": true,
+      "wire": "Infinity",
+      "nativeExpected": "resource-rejected",
+      "multipart": {
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "multipart/form-data; boundary=--------------------------111111111111111111111111",
+          "User-Agent": "axios/1.15.2",
+          "Content-Length": "432",
+          "Accept-Encoding": "gzip, compress, deflate, br"
+        },
+        "base64": "LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJmaWxlIjsgZmlsZW5hbWU9IkZha2UuUE5HIg0KQ29udGVudC1UeXBlOiBpbWFnZS9wbmcNCg0KAAEC/w0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJjb21wbGV4Ig0KDQpmYWxzZQ0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJ3aWR0aCINCg0KSW5maW5pdHkNCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0xMTExMTExMTExMTExMTExMTExMTExMTEtLQ0K"
+      }
+    },
+    {
+      "text": "1e4",
+      "trim": "1e4",
+      "number": "10000",
+      "sourceAccepted": true,
+      "wire": "10000",
+      "nativeExpected": "10000",
+      "multipart": {
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "multipart/form-data; boundary=--------------------------111111111111111111111111",
+          "User-Agent": "axios/1.15.2",
+          "Content-Length": "429",
+          "Accept-Encoding": "gzip, compress, deflate, br"
+        },
+        "base64": "LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJmaWxlIjsgZmlsZW5hbWU9IkZha2UuUE5HIg0KQ29udGVudC1UeXBlOiBpbWFnZS9wbmcNCg0KAAEC/w0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJjb21wbGV4Ig0KDQpmYWxzZQ0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJ3aWR0aCINCg0KMTAwMDANCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0xMTExMTExMTExMTExMTExMTExMTExMTEtLQ0K"
+      }
+    },
+    {
+      "text": "10000.1",
+      "trim": "10000.1",
+      "number": "10000.1",
+      "sourceAccepted": true,
+      "wire": "10000.1",
+      "nativeExpected": "resource-rejected",
+      "multipart": {
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "multipart/form-data; boundary=--------------------------111111111111111111111111",
+          "User-Agent": "axios/1.15.2",
+          "Content-Length": "431",
+          "Accept-Encoding": "gzip, compress, deflate, br"
+        },
+        "base64": "LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJmaWxlIjsgZmlsZW5hbWU9IkZha2UuUE5HIg0KQ29udGVudC1UeXBlOiBpbWFnZS9wbmcNCg0KAAEC/w0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJjb21wbGV4Ig0KDQpmYWxzZQ0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJ3aWR0aCINCg0KMTAwMDAuMQ0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMS0tDQo="
+      }
+    },
+    {
+      "text": "﻿80 ",
+      "trim": "80",
+      "number": "80",
+      "sourceAccepted": true,
+      "wire": "80",
+      "nativeExpected": "80",
+      "multipart": {
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "multipart/form-data; boundary=--------------------------111111111111111111111111",
+          "User-Agent": "axios/1.15.2",
+          "Content-Length": "426",
+          "Accept-Encoding": "gzip, compress, deflate, br"
+        },
+        "base64": "LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJmaWxlIjsgZmlsZW5hbWU9IkZha2UuUE5HIg0KQ29udGVudC1UeXBlOiBpbWFnZS9wbmcNCg0KAAEC/w0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJjb21wbGV4Ig0KDQpmYWxzZQ0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJ3aWR0aCINCg0KODANCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0xMTExMTExMTExMTExMTExMTExMTExMTEtLQ0K"
+      }
+    },
+    {
+      "text": "1e400",
+      "trim": "1e400",
+      "number": "Infinity",
+      "sourceAccepted": true,
+      "wire": "Infinity",
+      "nativeExpected": "resource-rejected",
+      "multipart": {
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "multipart/form-data; boundary=--------------------------111111111111111111111111",
+          "User-Agent": "axios/1.15.2",
+          "Content-Length": "432",
+          "Accept-Encoding": "gzip, compress, deflate, br"
+        },
+        "base64": "LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJmaWxlIjsgZmlsZW5hbWU9IkZha2UuUE5HIg0KQ29udGVudC1UeXBlOiBpbWFnZS9wbmcNCg0KAAEC/w0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJjb21wbGV4Ig0KDQpmYWxzZQ0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTExMTExMTExMTExMTExMTExMTExMTExMQ0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJ3aWR0aCINCg0KSW5maW5pdHkNCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0xMTExMTExMTExMTExMTExMTExMTExMTEtLQ0K"
+      }
+    }
+  ],
+  "closedVM": true,
+  "realProducerCalls": 0
+}
