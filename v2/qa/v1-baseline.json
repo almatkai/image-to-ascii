@@ -1,0 +1,20 @@
+{
+  "head": "f018cd7e93988a0c7e33d4afba54ea9d0ab6f49e",
+  "files": {
+    ".gitignore": "b027adcbb6131ef49be335e9a699657351ca3d5bb2b474379634d1714f5a585b",
+    ".prettierrc": "af858765de11954366be23467b95bae5e1a86818411c6723df7542cea9ffd521",
+    "CHANGELOG.md": "c8694b3b8d0f877361de0366c839d0dd7c4ab463b4b4661c37b0d19ce746f087",
+    "LICENSE": "bdc68fdb19e05a25a617c7b659fd388adeeb95b21011f8989eae4c1d1f1f68c5",
+    "README.md": "790e515bee7fef1ef61e66d1b11ba861f20dd1e263c1db984059718eca0098e4",
+    "assets/extension-icon.png": "883d6bb2858722b70c6d72dc47b81dc52790cb7bab256138347e0f1c7e54660e",
+    "eslint.config.mjs": "be2989fe08a37b6e3b848f07b42ee15d92f3b8b812355bc0a28b2f0765884a99",
+    "metadata/image-to-ascii-1.png": "65c9b8c9dd5d6a10b5b09cb0426e22a14405be12d899e99297076a26a2c3c632",
+    "metadata/image-to-ascii-2.png": "46d16937f7d9450ca3522e0e12157a274ee8e9ff8636cb88e92e834c15dba7f5",
+    "package-lock.json": "aae4f39008f3a0a4a1637f5736a3dbe6dc179c38f254e64c0685b5bcd2ecc2a9",
+    "package.json": "f2031d9984046725b272a9eda2453c160e59cf835734de9874ca9488dcd4d0e3",
+    "raycast-env.d.ts": "8382a66110069355a2067cf9adeb15428ac086d67d4e633ad90624b3bb0d177c",
+    "src/convert-image-to-ascii.tsx": "ca0d8e10c4ddcd2506d39c8f4eb8c107eff6bdf6b981a00d88e9aa9bae0cfaae",
+    "test/smoke.test.ts": "2ece56f159e13e51dadac28774362b8f547d16409bee34f7a11a85f8a1d843c7",
+    "tsconfig.json": "bb151e8c2e5442f6f9e42b27c08d88b0f7d2c5c127268ce0aedab2ef964b1eee"
+  }
+}
